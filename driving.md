@@ -1,3 +1,5 @@
+package Wall_e;
+//import program.Robot.direction;
 import lejos.hardware.Sound;
 import lejos.hardware.lcd.LCD;
 import lejos.utility.Delay;
@@ -53,37 +55,31 @@ public void rotBlau(float test) {
   
   motorD.rotate(-80);
   wall_e.getPilot().travel(340);
-  motorD.rotate(80);
-  wall_e.getPilot().travel(-100);
-  wall_e.getPilot().travel(100);
+  
   for (int i=0; i<=100;i++) {
-   colorID = wall_e.getColorSample();
-   farbe=colorID[0];
-   Delay.msDelay(10);
-   } 
+	   colorID = wall_e.getColorSample();
+	   farbe=colorID[0];
+	   Delay.msDelay(10);
+	   }
+  
+  motorD.rotate(80);
+  
+  if (farbe != 2 && farbe != 0) {
+	  wall_e.getPilot().travel(-100);
+	  wall_e.getPilot().travel(100);
+	  for (int i=0; i<=100;i++) {
+	   colorID = wall_e.getColorSample();
+	   farbe=colorID[0];
+	   Delay.msDelay(10);
+	   }
+  } 
 
   wall_e.getPilot().travel(-340);
 
 
   return farbe;
 }
- private float driveBlock1(float farbe) {
-	  float[] colorID =wall_e.getColorSample();
-	  
-	  
-	  motorD.rotate(-80);
-	  wall_e.getPilot().travel(360);
-	  motorD.rotate(80);
-	  for (int i=0; i<=100;i++) {
-	   colorID = wall_e.getColorSample();
-	   farbe=colorID[0];
-	   Delay.msDelay(30);
-	   } 
-	  wall_e.getPilot().travel(-360);
-
-
-	  return farbe;
-	}
+ 
 
 public void drivecourse() {
 	
