@@ -1,0 +1,54 @@
+package Wall_e;
+import lejos.hardware.Sound;
+
+import lejos.hardware.lcd.LCD;
+
+import lejos.hardware.Button;
+
+import lejos.utility.*;
+
+
+
+public class Hauptklasse {
+
+
+
+	public static void main(String[] args) {
+
+		LCD.clear();
+
+		LCD.drawString("starting up...", 0, 4);
+
+
+
+		Robot wall_e = new Robot();
+
+		Driving driving = new Driving(wall_e);
+
+		
+
+		driving.drivecourse();
+
+
+
+		Sound.beep();
+
+		LCD.clear();
+
+		LCD.drawString("END OF PROGRAM", 0, 4);
+
+		Delay.msDelay(1500);
+
+
+
+		LCD.clear();
+
+		LCD.drawString("PRESS ENTER TO EXIT", 0, 4);
+
+		Button.ENTER.waitForPress();
+
+	}
+
+
+
+}
